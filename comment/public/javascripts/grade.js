@@ -5,6 +5,8 @@ angular.module('grade', [])
             $scope.grades = [];
             var gpa = 0.0;
             $scope.gpaDict = { "A": 4.0, "A-": 3.67, "B+": 3.33, "B": 3.0, "B-": 2.67, "C+": 2.33, "C": 2.0, "C-": 1.67, "D+": 1.33, "D": 1.0, "D-": 0.66, "F": 0.0 };
+            
+            
             $scope.addGrade = function() {
                 var newgrade = { title: $scope.formContent, letter: $scope.formContent2 };
                 $http.post('/grades', newgrade).success(function(data) {
@@ -14,13 +16,15 @@ angular.module('grade', [])
             };
 
 
-            // $scope.incrementUpvotes = function(grade) {
-            //     $http.put('/grades/' + grade._id + '/upvote')
-            //         .success(function(data) {
-            //             console.log("upvote worked");
-            //             grade.upvotes += 1;
-            //         });
-            // };
+            $scope.editGrade = function(grade) {
+                var value = prompt('Please input the grade you got for this class:');
+                console.log("value is: ", value);
+                $http.put('/grades/' + grade._id + '/edit', value)
+                    .success(function(data) {
+                        console.log("edit worked");
+                        grade.letter = value;
+                    });
+            };
 
             $scope.delete = function(grade) {
                 $http.delete('/grades/' + grade._id)

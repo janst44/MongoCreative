@@ -3,9 +3,10 @@ var GradeSchema = new mongoose.Schema({
   title: String,
   letter: String,
 });
-// GradeSchema.methods.upvote = function(cb) {
-//   this.upvotes += 1;
-//   this.save(cb);
-// };
+
+GradeSchema.methods.changeletter = function(cb, newletter) {
+  this.letter = newletter;
+  this.save(cb);
+};
 
 mongoose.model('Grade', GradeSchema);

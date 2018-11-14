@@ -36,12 +36,14 @@ router.get('/grades/:grade', function(req, res) {
 });
 
 
-// router.put('/grades/:grade/upvote', function(req, res, next) {
-//   req.grade.upvote(function(err, grade){
-//     if (err) { return next(err); }
-//     res.json(grade);
-//   });
-// });
+router.put('/grades/:grade/edit', function(req, res, next) {
+  var letter = req.body;
+  console.log("Letter = ", letter);
+  req.grade.changeletter(function(err, grade){
+    if (err) { return next(err); }
+    res.json(grade);
+  }, letter);
+});
 
 router.delete('/grades/:grade', function(req, res) {
   console.log("in Delete");
