@@ -16,13 +16,13 @@
             </div>
 
             <form ng-submit="addGrade()" style="margin-top30px;">
-                <input type="text" ng-model="formContent"></input>
+                <input type="text" placeholder="Math 313" ng-model="formContent"></input>
+                <input type="text" placeholder="B+" ng-model="formContent2"></input>
                 <button type="submit">Add Grade</button>
             </form>
-            <div ng-repeat="grade in grades | orderBy: '-upvotes'">
+            <div ng-repeat="grade in grades">
     <span class="glyphicon glyphicon-remove" ng-click="delete(grade)"></span>
-    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(grade)"></span>
-    {{grade.title}} - upvotes: {{grade.upvotes}}
+    {{grade.title}} - {{grade.letter}}
   </div>
         </div>
     </div>

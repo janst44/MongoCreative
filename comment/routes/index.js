@@ -35,21 +35,13 @@ router.get('/grades/:grade', function(req, res) {
   res.json(req.grade);
 });
 
-router.param('grade', function(req, res, next, id) {
-  Grade.findById(id, function (err, grade){
-    if (err) { return next(err); }
-    if (!grade) { return next(new Error("can't find grade")); }
-    req.grade = grade;
-    return next();
-  });
-});
 
-router.put('/grades/:grade/upvote', function(req, res, next) {
-  req.grade.upvote(function(err, grade){
-    if (err) { return next(err); }
-    res.json(grade);
-  });
-});
+// router.put('/grades/:grade/upvote', function(req, res, next) {
+//   req.grade.upvote(function(err, grade){
+//     if (err) { return next(err); }
+//     res.json(grade);
+//   });
+// });
 
 router.delete('/grades/:grade', function(req, res) {
   console.log("in Delete");
