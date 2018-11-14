@@ -21,9 +21,12 @@
                 <button type="submit">Add Grade</button>
             </form>
             <div ng-repeat="grade in grades">
-    <span class="glyphicon glyphicon-remove" ng-click="delete(grade)"></span>
-    {{grade.title}} - {{grade.letter}}
-  </div>
+                <span class="glyphicon glyphicon-remove" ng-click="delete(grade)"></span> {{grade.title}} - {{grade.letter}}
+            </div>
+            <form ng-submit="calcGPA()" style="margin-top30px;">
+                <button type="submit">calculate GPA</button>
+                <div>GPA: {{gpa}}</div>
+            </form>
         </div>
     </div>
 </body>
