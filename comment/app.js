@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/fullmeanstack', { useNewUrlParser: true });
-require('./models/Comments');
+require('./models/Grades');
 var db = mongoose.connection; //Saves the connection as a variable to use
 db.on('error', console.error.bind(console, 'connection error:')); //Checks for connection errors
 db.once('open', function() { //Lets us know when we're connected

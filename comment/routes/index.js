@@ -4,56 +4,56 @@ var router = express.Router();
 
 
 var mongoose = require('mongoose');
-var Comment = mongoose.model('Comment');
+var Grade = mongoose.model('Grade');
 
-router.get('/comments', function(req, res, next) {
-  Comment.find(function(err, comments){
+router.get('/grades', function(req, res, next) {
+  Grade.find(function(err, grades){
     if(err){ return next(err); }
-    res.json(comments);
+    res.json(grades);
   });
 });
 
 
-router.post('/comments', function(req, res, next) {
-  var comment = new Comment(req.body);
-  comment.save(function(err, comment){
+router.post('/grades', function(req, res, next) {
+  var grade = new Grade(req.body);
+  grade.save(function(err, grade){
     if(err){ return next(err); }
-    res.json(comment);
+    res.json(grade);
   });
 });
 
-router.param('comment', function(req, res, next, id) {
-  Comment.findById(id, function (err, comment){
+router.param('grade', function(req, res, next, id) {
+  Grade.findById(id, function (err, grade){
     if (err) { return next(err); }
-    if (!comment) { return next(new Error("can't find comment")); }
-    req.comment = comment;
+    if (!grade) { return next(new Error("can't find grade")); }
+    req.grade = grade;
     return next();
   });
 });
 
-router.get('/comments/:comment', function(req, res) {
-  res.json(req.comment);
+router.get('/grades/:grade', function(req, res) {
+  res.json(req.grade);
 });
 
-router.param('comment', function(req, res, next, id) {
-  Comment.findById(id, function (err, comment){
+router.param('grade', function(req, res, next, id) {
+  Grade.findById(id, function (err, grade){
     if (err) { return next(err); }
-    if (!comment) { return next(new Error("can't find comment")); }
-    req.comment = comment;
+    if (!grade) { return next(new Error("can't find grade")); }
+    req.grade = grade;
     return next();
   });
 });
 
-router.put('/comments/:comment/upvote', function(req, res, next) {
-  req.comment.upvote(function(err, comment){
+router.put('/grades/:grade/upvote', function(req, res, next) {
+  req.grade.upvote(function(err, grade){
     if (err) { return next(err); }
-    res.json(comment);
+    res.json(grade);
   });
 });
 
-router.delete('/comments/:comment', function(req, res) {
+router.delete('/grades/:grade', function(req, res) {
   console.log("in Delete");
-  req.comment.remove();
+  req.grade.remove();
   res.sendStatus(200);
 });
 
