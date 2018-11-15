@@ -1,8 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
-
-
 var mongoose = require('mongoose');
 var Grade = mongoose.model('Grade');
 
@@ -37,12 +34,11 @@ router.get('/grades/:grade', function(req, res) {
 
 
 router.put('/grades/:grade/edit', function(req, res, next) {
-  var letter = req.body;
-  console.log("Letter = ", letter);
-  req.grade.changeletter(function(err, grade){
+  var newletter = req.body.letter;
+  req.grade.changeletter(function(err, grade) {
     if (err) { return next(err); }
-    res.json(grade);
-  }, letter);
+    res.json(grade)
+  }, newletter);
 });
 
 router.delete('/grades/:grade', function(req, res) {

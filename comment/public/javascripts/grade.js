@@ -18,8 +18,8 @@ angular.module('grade', [])
 
             $scope.editGrade = function(grade) {
                 var value = prompt('Please input the grade you got for this class:');
-                console.log("value is: ", value);
-                $http.put('/grades/' + grade._id + '/edit', value)
+                var newgrade = { letter: value };
+                $http.put('/grades/' + grade._id + '/edit', newgrade)
                     .success(function(data) {
                         console.log("edit worked");
                         grade.letter = value;
