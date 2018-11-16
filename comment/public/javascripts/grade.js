@@ -53,7 +53,7 @@ angular.module('grade', [])
             
              $scope.addSemester = function() {//grab from formcontent0
                 var newsemester = { semester: $scope.formContent0 };
-                $http.post('/semester', newsemester).success(function(data) {
+                $http.post('/semesters', newsemester).success(function(data) {
                     $scope.semesters.push(data);
                 });
                 $scope.formContent0 = '';
