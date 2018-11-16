@@ -9,7 +9,7 @@ router.get('/grades', function(req, res, next) {
 if(req.query.currentSemester){
   myObj = {Semester: req.query.currentSemester};
 }
-  Grade.find(myObj, function(err, grades){
+  Grade.find(function(err, grades){
     if(err){ return next(err); }
     res.json(grades);
   });

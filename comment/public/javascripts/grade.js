@@ -32,8 +32,8 @@ angular.module('grade', [])
                     .success(function(data) {
                         console.log("delete worked");
                     });
-               // $scope.selectSemester();
-                  $scope.getAll();
+                $scope.selectSemester();
+                  //$scope.getAll();
             };
             
             
@@ -66,16 +66,16 @@ angular.module('grade', [])
             };
             $scope.getAllSemesters();
             
-            // $scope.selectSemester = function() {//
-            //     $scope.currentSemester = $scope.formContent0;
-            //     if($scope.currentSemester == ""){
-            //         console.log("no semester selected");
-            //         return [];
-            //     }
-            //     return $http.get('/grades', currentSemester).success(function(data) {
-            //         angular.copy(data, $scope.grades);
-            //     });
-            // };
+            $scope.selectSemester = function() {
+                $scope.currentSemester = $scope.formContent0;
+                if($scope.currentSemester == ""){
+                    console.log("no semester selected");
+                    return [];
+                }
+                return $http.get('/grades', currentSemester).success(function(data) {
+                    angular.copy(data, $scope.grades);
+                });
+            };
 
             
 
