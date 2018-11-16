@@ -14,7 +14,16 @@
             <div class="page-header">
                 <h1>Student GPA Tracker </h1>
             </div>
-
+            
+            <form ng-submit="addSemester()" style="margin-top30px;">
+                <input type="text" placeholder="Fall2018" ng-model="formContent0"></input>
+                <button type="submit">Add Semester</button>
+            </form>
+            <div ng-repeat="semester in semesters">
+                <span class="glyphicon glyphicon-chevron-down" ng-click="selectSemester(semester)"></span>
+                {{semester.title}}
+            </div>
+            
             <form ng-submit="addGrade()" style="margin-top30px;">
                 <input type="text" placeholder="Math 313" ng-model="formContent"></input>
                 <input type="text" placeholder="B+" ng-model="formContent2"></input>
