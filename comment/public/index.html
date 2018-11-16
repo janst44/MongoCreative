@@ -7,24 +7,16 @@
     <script src="javascripts/grade.js"></script>
     <link rel="stylesheet" href="./stylesheets/style.css">
 
+
 </head>
 
 <body ng-app="grade" ng-controller="MainCtrl">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="page-header">
-                <h1>Student GPA Tracker</h1>
+                <h1>Student GPA Tracker </h1>
             </div>
-            
-            <form ng-submit="addSemester()" style="margin-top30px;">
-                <input type="text" placeholder="Fall2018" ng-model="formContent0"></input>
-                <button type="submit">Add Semester</button>
-            </form>
-            <div ng-repeat="semester in semesters">
-                <span class="glyphicon glyphicon-chevron-down" ng-click="selectSemester(semester)"></span>
-                {{semester.title}}
-            </div>
-            
+
             <form ng-submit="addGrade()" style="margin-top30px;">
                 <input type="text" placeholder="Math 313" ng-model="formContent"></input>
                 <input type="text" placeholder="B+" ng-model="formContent2"></input>
@@ -32,13 +24,15 @@
             </form>
             <div ng-repeat="grade in grades">
                 <span class="glyphicon glyphicon-remove" ng-click="delete(grade)"></span>
-                <span class="glyphicon glyphicon-pencil" ng-click="editGrade(grade)"></span>
-                {{grade.title}} - {{grade.letter}}
+                <span class="glyphicon glyphicon-pencil" ng-click="editGrade(grade)"></span> {{grade.title}} - {{grade.letter}}
             </div>
-            <form ng-submit="calcGPA()" style="margin-top30px;">
-                <button type="submit">Calculate GPA</button>
-                <div>GPA: {{gpa}}</div>
-            </form>
+            
+                <form id="cal" ng-submit="calcGPA()" style="margin-top30px;">
+                    <button type="submit">Calculate GPA</button>
+                    <div>GPA: {{gpa}}</div>
+                </form>
+            
+
         </div>
     </div>
 </body>
